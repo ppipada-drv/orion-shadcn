@@ -4,7 +4,8 @@
 		"declaration": true,
 		"declarationDir": "./dist/types",
 		"emitDeclarationOnly": true,
-		"outDir": "./dist"
+		"outDir": "./dist",
+		"rootDir": "./src"
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx"],
 	"exclude": [
@@ -13,7 +14,7 @@
 		"**/*.stories.js",
 		"**/*.stories.jsx",
 		"**/*.mdx",
-		"**/tailwind.config.package.ts",
-		"**/vite.config.ts"
+		"tailwind.config.package.ts",
+		"vite.config.ts"
 	]
 }

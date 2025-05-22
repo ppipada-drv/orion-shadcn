@@ -21,7 +21,7 @@
 		"format:check": "prettier --check .",
 		"lint:fix": "eslint . --fix && prettier --write .",
 		"build:css": "npx @tailwindcss/cli -c tailwind.config.package.ts -i ./src/index.css -o ./dist/style.css --minify",
-		"build": "rimraf dist && tsc -b && vite build && yarn build:css",
+		"build": "rimraf dist && tsc -b tsconfig.build.json && vite build && yarn build:css",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},

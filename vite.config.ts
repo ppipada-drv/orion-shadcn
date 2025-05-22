@@ -9,7 +9,8 @@ export default defineConfig({
 		react(),
 		tailwindcss(),
 		dts({
-			exclude: ['**/*.stories.ts', '**/*.stories.tsx', '**/*.mdx'],
+			include: ['src'],
+			exclude: ['src/stories'],
 		}),
 	],
 	resolve: {
