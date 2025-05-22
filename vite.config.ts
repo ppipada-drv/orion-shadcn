@@ -5,7 +5,13 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-	plugins: [react(), tailwindcss(), dts()],
+	plugins: [
+		react(),
+		tailwindcss(),
+		dts({
+			exclude: ['**/*.stories.ts', '**/*.stories.tsx', '**/*.mdx'],
+		}),
+	],
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
@@ -26,6 +32,8 @@ export default defineConfig({
 					'react-dom': 'ReactDOM',
 				},
 			},
+
+			input: [path.resolve(__dirname, 'src/index.ts')],
 		},
 		cssCodeSplit: false,
 	},
