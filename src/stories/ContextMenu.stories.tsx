@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-// 💡  adjust the import to match your folder structure
-
 import {
 	ClipboardIcon,
 	CopyIcon,
@@ -46,7 +44,7 @@ A fully styled shadcn/ui ContextMenu powered by [@radix-ui/react-context-menu](h
 
 Right-click (or long-press on touch devices) on the **grey dashed area** in each story to open the menu.
 
-All styling comes from TailwindCSS v4 tokens. Use \`data-slot\` attributes to hook into the DOM if you need end-to-end tests.
+Use \`data-slot\` attributes to hook into the DOM if you need end-to-end tests.
 
 `,
 			},
