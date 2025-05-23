@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { FiChevronRight } from 'react-icons/fi';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import { ChevronRight } from 'lucide-react';
 
 import {
 	Breadcrumb,
@@ -142,13 +141,13 @@ export const CustomSeparator: Story = {
 					<BreadcrumbLink href="/">Home</BreadcrumbLink>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator>
-					<FiChevronRight className="inline-block text-muted-foreground" />
+					<ChevronRight className="inline-block text-muted-foreground" />
 				</BreadcrumbSeparator>
 				<BreadcrumbItem>
 					<BreadcrumbLink href="/react">React</BreadcrumbLink>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator>
-					<FiChevronRight className="inline-block text-muted-foreground" />
+					<ChevronRight className="inline-block text-muted-foreground" />
 				</BreadcrumbSeparator>
 				<BreadcrumbItem>
 					<BreadcrumbPage>Breadcrumb</BreadcrumbPage>
@@ -159,8 +158,7 @@ export const CustomSeparator: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story:
-					'Any React node can live inside **`BreadcrumbSeparator`**. Here we use `FiChevronRight` from **react-icons/fi**.',
+				story: 'Any React node can live inside **`BreadcrumbSeparator`**. Here we use `ChevronRight`.',
 			},
 		},
 	},
@@ -216,7 +214,7 @@ export const Playground: StoryObj<PlaygroundArgs> = {
 
 								{!isLast && (
 									<BreadcrumbSeparator>
-										{useIconSeparator ? <FiChevronRight className="inline-block text-muted-foreground" /> : '/'}
+										{useIconSeparator ? <ChevronRight className="inline-block text-muted-foreground" /> : '/'}
 									</BreadcrumbSeparator>
 								)}
 							</React.Fragment>

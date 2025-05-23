@@ -1,6 +1,5 @@
-import { FiUser } from 'react-icons/fi';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import { User } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
@@ -154,14 +153,14 @@ export const WithFallbackIcon: Story = {
 		<Avatar className={sizeClassName(size)}>
 			<AvatarImage src={src} alt={alt} />
 			<AvatarFallback>
-				<FiUser className="h-4/5 w-4/5" />
+				<User className="h-4/5 w-4/5" />
 			</AvatarFallback>
 		</Avatar>
 	),
 	parameters: {
 		docs: {
 			description: {
-				story: 'Uses a **react-icons/fi** placeholder when no initials can be generated.',
+				story: 'Uses a placeholder when no initials can be generated.',
 			},
 		},
 	},

@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-import { FiChevronDown, FiLock } from 'react-icons/fi';
+import { ChevronDown, Lock } from 'lucide-react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
@@ -119,7 +119,7 @@ export const WithIcons: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Using `react-icons` to add leading icons inside the trigger.',
+				story: 'Using leading icons inside the trigger.',
 			},
 		},
 	},
@@ -127,17 +127,17 @@ export const WithIcons: Story = {
 		<Accordion {...args}>
 			<AccordionItem value="item-1">
 				<AccordionTrigger>
-					<FiChevronDown className="mr-2 shrink-0" />
+					<ChevronDown className="mr-2 shrink-0" />
 					Show details
 				</AccordionTrigger>
 				<AccordionContent>
-					This row uses <code>react-icons</code>.
+					This row uses <code>icons</code>.
 				</AccordionContent>
 			</AccordionItem>
 
 			<AccordionItem value="item-2">
 				<AccordionTrigger>
-					<FiLock className="mr-2 shrink-0" />
+					<Lock className="mr-2 shrink-0" />
 					Locked section
 				</AccordionTrigger>
 				<AccordionContent>Purely demonstrative.</AccordionContent>
@@ -330,11 +330,7 @@ export const Nested: Story = {
 	),
 };
 
-/* ──────────────────────────────────────────────────────────────────────────
-   INTERACTIVE TEST (play function)
-   ──────────────────────────────────────────────────────────────────────── */
-
-export const Interactive: Story = {
+export const Playground: Story = {
 	parameters: {
 		docs: {
 			description: {

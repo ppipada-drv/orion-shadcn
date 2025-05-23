@@ -1,6 +1,5 @@
-import { FiLock, FiMail, FiUser } from 'react-icons/fi';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import { Lock, Mail, User } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -85,7 +84,7 @@ export const WithForm: StoryObj<typeof meta> = {
 			<CardContent className="grid gap-4">
 				<div className="grid gap-2">
 					<Label htmlFor="email" className="flex items-center gap-1">
-						<FiMail className="size-4" />
+						<Mail className="size-4" />
 						Email
 					</Label>
 					<Input id="email" type="email" placeholder="name@example.com" />
@@ -93,7 +92,7 @@ export const WithForm: StoryObj<typeof meta> = {
 
 				<div className="grid gap-2">
 					<Label htmlFor="password" className="flex items-center gap-1">
-						<FiLock className="size-4" />
+						<Lock className="size-4" />
 						Password
 					</Label>
 					<Input id="password" type="password" placeholder="••••••••" />
@@ -173,7 +172,7 @@ export const WithIconHeader: StoryObj<typeof meta> = {
 	render: args => (
 		<Card {...args} className="max-w-xs">
 			<CardHeader className="flex flex-row items-center space-y-0 gap-3">
-				<FiUser className="size-6 text-primary" />
+				<User className="size-6 text-primary" />
 				<div>
 					<CardTitle className="text-base">Profile Completion</CardTitle>
 					<CardDescription>70 % done</CardDescription>

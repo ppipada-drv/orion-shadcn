@@ -3707,6 +3707,11 @@ electron-to-chromium@^1.5.149:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.155.tgz#809dd0ae9ae1db87c358e0c0c17c09a2ffc432d1"
   integrity sha512-ps5KcGGmwL8VaeJlvlDlu4fORQpv3+GIcF5I3f9tUKUlJ/wsysh6HU8P5L1XWRYeXfA0oJd4PyM8ds8zTFf6Ng==
 
+embla-carousel-autoplay@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel-autoplay/-/embla-carousel-autoplay-8.6.0.tgz#bc86c97de00d52ec34b05058736ef50af6e0d0e4"
+  integrity sha512-OBu5G3nwaSXkZCo1A6LTaFMZ8EpkYbwIaH+bPqdBnDGQ2fh4+NbzjXjs2SktoPNKCtflfVMc75njaDHOYXcrsA==
+
 embla-carousel-react@^8.6.0:
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/embla-carousel-react/-/embla-carousel-react-8.6.0.tgz#b737042a32761c38d6614593653b3ac619477bd1"
@@ -6143,11 +6148,6 @@ react-hook-form@^7.56.4:
   version "7.56.4"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.56.4.tgz#273f55d43fb24ace3e2b9409d0d5326306d7905e"
   integrity sha512-Rob7Ftz2vyZ/ZGsQZPaRdIefkgOSrQSPXfqBdvOPwJfoGnjwRJUs7EM7Kc1mcoDv3NOtqBzPGbcMB8CGn9CKgw==
-
-react-icons@^5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.5.0.tgz#8aa25d3543ff84231685d3331164c00299cdfaf2"
-  integrity sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==
 
 react-is@^16.13.1:
   version "16.13.1"

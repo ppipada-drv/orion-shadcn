@@ -1,6 +1,5 @@
-import { FiCheck } from 'react-icons/fi';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import { Check } from 'lucide-react';
 
 import { Badge, badgeVariants } from '@/components/ui/badge';
 
@@ -125,7 +124,7 @@ export const LinkStyled: Story = {
 export const WithIcon: Story = {
 	render: ({ children, ...rest }) => (
 		<Badge {...rest} className="inline-flex items-center gap-1.5">
-			<FiCheck className="size-3" /> {children}
+			<Check className="size-3" /> {children}
 		</Badge>
 	),
 	args: {

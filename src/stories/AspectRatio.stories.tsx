@@ -1,6 +1,5 @@
-import { FiImage } from 'react-icons/fi';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import { Image } from 'lucide-react';
 
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 
@@ -82,7 +81,7 @@ export const Square: Story = {
 		ratio: 1,
 		children: (
 			<div className="flex h-full w-full flex-col items-center justify-center rounded-md border border-dashed border-muted/40 text-muted-foreground">
-				<FiImage size="1.75rem" />
+				<Image size="1.75rem" />
 				<span className="mt-2 text-xs">1 × 1</span>
 			</div>
 		),

@@ -1,10 +1,6 @@
-/*  ──────────────────────────────────────────────────────────────────────────
-    AlertDialog.stories.tsx
-    Storybook v8 • React 19 • TypeScript • Vite 6 • Tailwind 4 • shadcn/ui 2.5
-    ────────────────────────────────────────────────────────────────────────── */
 import { Fragment, useState } from 'react';
 
-import { FiAlertTriangle, FiTrash2 } from 'react-icons/fi';
+import { AlertTriangle, Trash2 } from 'lucide-react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
@@ -22,9 +18,10 @@ import {
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
-/*  Meta configuration
-    ‣ CSF 3 (automatically inferred Args)                     */
-const meta: Meta = {
+/* ──────────────────────────────────────────────────────────────────────────
+   Meta
+   ────────────────────────────────────────────────────────────────────────── */
+const meta: Meta<typeof AlertDialogContent> = {
 	title: 'OrionShadcn/AlertDialog',
 	component: AlertDialogContent,
 	parameters: {
@@ -32,7 +29,8 @@ const meta: Meta = {
 		docs: {
 			description: {
 				component:
-					'The **AlertDialog** component is a client-side primitive used to interrupt the user with an important decision. Below you can explore several common patterns.',
+					'The **AlertDialog** primitive interrupts the user with an important decision.\
+          \nIt follows the Radix UI behaviour and ships fully accessible by default.',
 			},
 		},
 	},
@@ -40,11 +38,18 @@ const meta: Meta = {
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<typeof meta>;
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Helpers
+   Helper – BaseDialog
    ────────────────────────────────────────────────────────────────────────── */
+interface BaseDialogProps {
+	title?: string;
+	description?: string;
+	actionLabel?: string;
+	cancelLabel?: string;
+	destructive?: boolean;
+}
 
 const BaseDialog = ({
 	title = 'Are you absolutely sure?',
@@ -52,20 +57,14 @@ const BaseDialog = ({
 	actionLabel = 'Continue',
 	cancelLabel = 'Cancel',
 	destructive = false,
-}: {
-	title?: string;
-	description?: string;
-	actionLabel?: string;
-	cancelLabel?: string;
-	destructive?: boolean;
-}) => (
+}: BaseDialogProps) => (
 	<AlertDialog>
 		<AlertDialogTrigger
-			className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/80 data-[destructive=true]:bg-destructive"
 			data-testid="trigger"
 			data-destructive={destructive}
+			className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/80 data-[destructive=true]:bg-destructive"
 		>
-			{destructive ? <FiTrash2 className="size-4" /> : <FiAlertTriangle className="size-4" />}
+			{destructive ? <Trash2 className="size-4" /> : <AlertTriangle className="size-4" />}
 			Open dialog
 		</AlertDialogTrigger>
 
@@ -92,26 +91,50 @@ const BaseDialog = ({
    1. Default
    ────────────────────────────────────────────────────────────────────────── */
 export const Default: Story = {
-	render: () => <BaseDialog />,
+	render: args => <BaseDialog {...args} />,
+	args: {
+		destructive: false,
+	},
+	parameters: {
+		docs: {
+			description: {
+				story: 'The default **AlertDialog** with a non-destructive confirmation action.',
+			},
+		},
+		snapshot: { skip: false },
+	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 
-		// open the dialog
+		/* open the dialog */
 		await userEvent.click(canvas.getByTestId('trigger'));
 		await expect(canvas.getByTestId('title')).toBeInTheDocument();
 
-		// close the dialog
+		/* close the dialog */
 		await userEvent.click(canvas.getByTestId('cancel'));
 		await expect(canvas.queryByTestId('title')).not.toBeInTheDocument();
 	},
 };
 
 /* ──────────────────────────────────────────────────────────────────────────
-   2. Destructive (accent color, icon & red action button)
+   2. Destructive (accent colour, icon & red action button)
    ────────────────────────────────────────────────────────────────────────── */
 export const Destructive: Story = {
-	args: {},
-	render: () => <BaseDialog destructive actionLabel="Delete account" />,
+	render: args => <BaseDialog {...args} />,
+	args: {
+		destructive: true,
+		actionLabel: 'Delete account',
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A destructive variant that leverages the **destructive** colour-scheme and iconography \
+          to emphasise the gravity of the action.',
+			},
+		},
+		snapshot: { skip: false },
+	},
 };
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -120,21 +143,29 @@ export const Destructive: Story = {
 const longLorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fringilla erat. '.repeat(12);
 
 export const WithLongContent: Story = {
-	render: () => (
-		<BaseDialog
-			title="Please read the following carefully"
-			description={longLorem}
-			actionLabel="I have read everything"
-		/>
-	),
+	render: args => <BaseDialog {...args} />,
+	args: {
+		title: 'Please read the following carefully',
+		description: longLorem,
+		actionLabel: 'I have read everything',
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'When the dialog content exceeds the viewport height, the body becomes scrollable \
+          to maintain focus and prevent background interaction.',
+			},
+		},
+		snapshot: { skip: false },
+	},
 };
 
 /* ──────────────────────────────────────────────────────────────────────────
-   4. Controlled (external open state example w/ React 19 useOptimistic)
+   4. Playground (fully-controlled)
    ────────────────────────────────────────────────────────────────────────── */
-export const Controlled: Story = {
+export const Playground: Story = {
 	render: () => {
-		/* React 19: useOptimistic isn’t stable yet, so we’ll fallback to useState   */
 		const [open, setOpen] = useState(false);
 
 		return (
@@ -147,15 +178,17 @@ export const Controlled: Story = {
 				</button>
 
 				<AlertDialog open={open} onOpenChange={setOpen}>
+					{/* hidden trigger for a11y – keeps Radix expectations happy */}
 					<AlertDialogTrigger asChild>
-						{/* Hidden trigger for accessibility */}
 						<span />
 					</AlertDialogTrigger>
 
 					<AlertDialogContent>
 						<AlertDialogHeader>
 							<AlertDialogTitle>Manual control</AlertDialogTitle>
-							<AlertDialogDescription>The dialog state is controlled from the parent component.</AlertDialogDescription>
+							<AlertDialogDescription>
+								The dialog state (<code>open</code>) is controlled from the parent component.
+							</AlertDialogDescription>
 						</AlertDialogHeader>
 						<AlertDialogFooter>
 							<AlertDialogCancel onClick={() => setOpen(false)}>Close</AlertDialogCancel>
@@ -173,12 +206,14 @@ export const Controlled: Story = {
 			</Fragment>
 		);
 	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A fully-controlled story showcasing how the dialog can be toggled from upstream components, \
+          ideal for complex flows or global state management.',
+			},
+		},
+		snapshot: { skip: false },
+	},
 };
-
-/* ──────────────────────────────────────────────────────────────────────────
-   5. Visual regression parameters
-   ────────────────────────────────────────────────────────────────────────── */
-Default.parameters = { ...Default.parameters, snapshot: { skip: false } };
-Destructive.parameters = { ...Destructive.parameters, snapshot: { skip: false } };
-WithLongContent.parameters = { ...WithLongContent.parameters, snapshot: { skip: false } };
-Controlled.parameters = { ...Controlled.parameters, snapshot: { skip: false } };

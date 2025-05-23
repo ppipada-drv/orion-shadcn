@@ -1,8 +1,7 @@
-import { FiAlertCircle, FiCheckCircle, FiInfo, FiTerminal, FiXCircle } from 'react-icons/fi';
-
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { VariantProps } from 'class-variance-authority';
+import { AlertCircle, CheckCircle, Info, Terminal, XCircle } from 'lucide-react';
 
 /* shadcn/ui primitive ------------------------------------------------------ */
 import { Alert, AlertDescription, AlertTitle, alertVariants } from '@/components/ui/alert';
@@ -24,11 +23,11 @@ interface BaseAlertProps {
 
 /* map a string key to a react-icon component ------------------------------ */
 const iconMap = {
-	terminal: FiTerminal,
-	alert: FiAlertCircle,
-	info: FiInfo,
-	success: FiCheckCircle,
-	error: FiXCircle,
+	terminal: Terminal,
+	alert: AlertCircle,
+	info: Info,
+	success: CheckCircle,
+	error: XCircle,
 } as const;
 
 /* base wrapper – keeps the example isolated from the design-system -------- */
@@ -38,7 +37,7 @@ const BaseAlert = ({
 	description = 'You can add components to your app using the CLI.',
 	icon = 'terminal',
 }: BaseAlertProps) => {
-	const Icon = icon !== 'none' ? (iconMap[icon] ?? FiTerminal) : undefined;
+	const Icon = icon !== 'none' ? (iconMap[icon] ?? Terminal) : undefined;
 
 	return (
 		<Alert variant={variant} data-testid="alert">
@@ -152,7 +151,7 @@ export const Success: Story = {
 	},
 	render: args => (
 		<Alert className="bg-green-100 border-green-500" variant="default" data-testid="alert">
-			<FiCheckCircle className="size-4 shrink-0" data-testid="icon" />
+			<CheckCircle className="size-4 shrink-0" data-testid="icon" />
 			{<AlertTitle data-testid="title">Great!</AlertTitle>}
 			<AlertDescription data-testid="description">Everything worked just fine.</AlertDescription>
 		</Alert>
@@ -178,7 +177,7 @@ export const Warning: Story = {
 	},
 	render: args => (
 		<Alert className="bg-yellow-100 border-yellow-500" variant="default" data-testid="alert">
-			<FiAlertCircle className="size-4 shrink-0" data-testid="icon" />
+			<AlertCircle className="size-4 shrink-0" data-testid="icon" />
 			{<AlertTitle data-testid="title">Warning!</AlertTitle>}
 			<AlertDescription data-testid="description">
 				Something might not be right – double-check your settings before proceeding.

@@ -9,7 +9,7 @@
   - tailwind > 4
   - react > 19
   - shadcn > 2.5 with newyork style
-  - icons (used in storybook): react-icons/fi
+  - icons (used in storybook): lucide-react
 
 - Lint/Fmt
 
@@ -63,7 +63,7 @@
 | Global-footer                     |    yes    |   no    | Not present; can be composed                                  |
 | Header-bar                        |    yes    |   no    | Not present; can be composed                                  |
 | Heading                           |    yes    |   yes   | Direct mapping                                                |
-| Icon                              |    yes    | partial | Use react-icons or shadcn's Icon component                    |
+| Icon                              |    yes    | partial | Use lucide-react                                              |
 | Information modal                 |    yes    | partial | Can be composed using Modal/AlertDialog                       |
 | Input                             |    yes    |   yes   | Direct mapping (Input, Textarea, etc.)                        |
 | Input feedback                    |    yes    | partial | Can be composed using FormField + Description/Error in shadcn |
@@ -76,7 +76,7 @@
 | Motion diagram                    |    yes    |   no    | Not present; custom implementation needed                     |
 | Number text                       |    yes    |   no    | Can be composed using Input type="number"                     |
 | Orion Context                     |    yes    |   no    | App-specific; not in shadcn                                   |
-| Orion Icons/icons/...             |    yes    | partial | Use react-icons or shadcn's Icon component                    |
+| Orion Icons/icons/...             |    yes    | partial | Use lucide-react                                              |
 | Page                              |    yes    |   no    | Layout component; can be composed                             |
 | Pagination                        |    yes    |   yes   | Direct mapping                                                |
 | Phone input                       |    yes    |   no    | Not present; can use third-party or custom                    |
@@ -114,3 +114,14 @@
 - datatable
 - datepicker
 - toast - deprecated, use sooner
+
+## Prompt
+
+Always use Markdown format for output
+tech stack: shadcn 2.5, react 19, ts, lucide react icons, tailwind 4, vite 6, storybook 8 (jest and testing library utils merged into test)
+always give docs too inside stories
+always give playground story too.
+title of story OrionShadcn/<componentName>
+
+transform, add and enhance below stories to match my tech stack.
+always give full code back

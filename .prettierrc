@@ -13,7 +13,7 @@
 	"plugins": ["@trivago/prettier-plugin-sort-imports"],
 	"importOrder": [
 		"^react$",
-		"^react-icons/(.*)$",
+		"^lucide-react$",
 		"<THIRD_PARTY_MODULES>",
 		"^@/assets/(.*)$",
 		"^@/components/(.*)$",
