@@ -11,7 +11,15 @@
 	"tabWidth": 2,
 	"trailingComma": "es5",
 	"plugins": ["@trivago/prettier-plugin-sort-imports"],
-	"importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^@/assets/(.*)$", "^@/components/(.*)$", "^@/(.*)$", "^[./]"],
+	"importOrder": [
+		"^react$",
+		"^react-icons/(.*)$",
+		"<THIRD_PARTY_MODULES>",
+		"^@/assets/(.*)$",
+		"^@/components/(.*)$",
+		"^@/(.*)$",
+		"^[./]"
+	],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true,
 	"importOrderCaseInsensitive": true
